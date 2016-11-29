@@ -10,9 +10,9 @@
 #import "MyCircleView.h"
 
 @interface MyLockView ()<MyLockViewDelegate>
-
+///存放被选择按钮的数组
 @property (strong, nonatomic) NSMutableArray *selectedButtons;
-
+///当前点的坐标
 @property (assign, nonatomic) CGPoint currentMovePoint;
 
 @end
@@ -62,7 +62,7 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
+    //布局按钮
     for (int index = 0; index < self.subviews.count; index ++) {
         
         MyCircleView * btn = self.subviews[index];
