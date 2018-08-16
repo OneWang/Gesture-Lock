@@ -18,13 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
 }
 
-- (void)lockView:(MyLockView *)lockView didFinishPath:(NSString *)path
-{
+- (void)lockView:(MyLockView *)lockView didFinishPath:(NSString *)path{
     NSLog(@"获得用户手势路径:%@",path);
 }
-
 
 @end

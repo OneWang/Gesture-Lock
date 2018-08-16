@@ -19,27 +19,15 @@
 
 @implementation MyLockView
 
-- (NSMutableArray *)selectedButtons
-{
-    if (_selectedButtons == nil) {
-        _selectedButtons = [NSMutableArray array];
-    }
-    return _selectedButtons;
-}
-
-
 //初始化
-
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
         [self setup];
     }
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super initWithCoder:aDecoder]) {
         [self setup];
     }
@@ -47,20 +35,14 @@
 }
 
 - (void)setup{
-    
     for (int index = 0; index < 9; index ++) {
-        
         MyCircleView * button = [MyCircleView buttonWithType:UIButtonTypeCustom];
-        
         button.tag = index;
-        
         [self addSubview:button];
     }
 }
 
-
-- (void)layoutSubviews
-{
+- (void)layoutSubviews{
     [super layoutSubviews];
     //布局按钮
     for (int index = 0; index < self.subviews.count; index ++) {
@@ -109,8 +91,7 @@
 
 #pragma mark - 触摸方法
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     //清空当前的触摸点
     self.currentMovePoint = CGPointMake(-10, -10);
     
@@ -128,8 +109,7 @@
     [self setNeedsDisplay];
 }
 
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     //1.获得触摸点
     CGPoint pos = [self pointWithTouches:touches];
     //2.获得触摸的按钮
@@ -145,9 +125,7 @@
     [self setNeedsDisplay];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if ([self.delegate respondsToSelector:@selector(lockView:didFinishPath:)]) {
         NSMutableString * path = [NSMutableString string];
         for (MyCircleView * button  in self.selectedButtons) {
@@ -155,7 +133,6 @@
         }
         [self.delegate lockView:self didFinishPath:path];
     }
-    
     //通知代理
     
     //取消选中所有的按钮
@@ -168,26 +145,21 @@
     
     //清空选中的按钮
     [self.selectedButtons removeAllObjects];
-    
     [self setNeedsDisplay];
-
 }
 
-- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self touchesEnded:touches withEvent:event];
 }
 
 #pragma mark - 绘图
-- (void)drawRect:(CGRect)rect
-{
+- (void)drawRect:(CGRect)rect{
     if (self.selectedButtons.count == 0) return;
     
     UIBezierPath * path = [UIBezierPath bezierPath];
     //遍历所有按钮
     for (int index = 0; index < self.selectedButtons.count; index++) {
         MyCircleView * btn = self.selectedButtons[index];
-        
         if (index == 0) {
             [path moveToPoint:btn.center];
         }else{
@@ -205,7 +177,14 @@
     [[UIColor colorWithRed:32/255.0 green:210/255.0 blue:254/255.0 alpha:.7] set];
     path.lineJoinStyle = kCGLineJoinBevel;
     [path stroke];
-    
+}
+
+#pragma mark - setter and getter
+- (NSMutableArray *)selectedButtons{
+    if (!_selectedButtons) {
+        _selectedButtons = [[NSMutableArray alloc] init];
+    }
+    return _selectedButtons;
 }
 
 @end
