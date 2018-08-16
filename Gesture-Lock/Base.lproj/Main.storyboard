@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,20 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Home_refresh_bg" translatesAutoresizingMaskIntoConstraints="NO" id="9Uj-YQ-u44">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home_refresh_bg" translatesAutoresizingMaskIntoConstraints="NO" id="9Uj-YQ-u44">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LGS-0W-Zvp" customClass="MyLockView">
-                                <rect key="frame" x="0.0" y="126" width="375" height="388"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LGS-0W-Zvp" customClass="MyLockView">
+                                <rect key="frame" x="0.0" y="139.5" width="375" height="388"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Mw3-ur-i8t"/>
+                                    <constraint firstAttribute="height" constant="388" id="Unt-Th-G3g"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="dA0-EU-eXA"/>
                                 </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LGS-0W-Zvp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Djl-9Z-RAO"/>
+                            <constraint firstItem="LGS-0W-Zvp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IDs-jx-tKO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="9Uj-YQ-u44" secondAttribute="bottom" id="Mzf-Td-8Oe"/>
+                            <constraint firstItem="9Uj-YQ-u44" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="S3p-Et-2Z8"/>
+                            <constraint firstAttribute="trailing" secondItem="LGS-0W-Zvp" secondAttribute="trailing" id="eSk-zs-OKc"/>
+                            <constraint firstItem="9Uj-YQ-u44" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tcd-oj-f8K"/>
+                            <constraint firstAttribute="trailing" secondItem="9Uj-YQ-u44" secondAttribute="trailing" id="ujd-o2-U00"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
